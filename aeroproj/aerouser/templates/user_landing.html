@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Devices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .device-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .device-list-item {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 12px;
+            border-bottom: 1px solid #dddddd; 
+            background-color: #ffffff;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+
+        .device-list-item div {
+            flex: 1;
+        }
+
+        .allocate-button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .allocate-button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Devices</h1>
+    <ul class="device-list">
+        {% for device in devices %}
+            <li class="device-list-item">
+                <div>
+                    <strong>Serial number:</strong> {{ device.serial_number }} <br>
+                    <strong>Model:</strong> {{ device.model }}<br>
+                    <strong>Status:</strong> {{ device.status }}
+                </div>
+                <a href="{% url 'user_homepage' serial_number=device.serial_number %}" class="allocate-button">View</a>                        
+            </li>
+        {% empty %}
+            <li class="device-list-item">No devices found</li>
+        {% endfor %}
+    </ul>   
+</body>
+</html>

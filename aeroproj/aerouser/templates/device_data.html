@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ventilator Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .ventilator-data {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .status-allocated {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-not-allocated {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ventilator Data</h1>
+    <div class="ventilator-data">
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Model</th>
+                    <th>Status</th>
+                    <th>Battery Number</th>
+                    <th>Battery Manufacturing Date</th>
+                    <th>Model Number</th>
+                    <th>Lot Number</th>
+                    <th>Manufacturing Date</th>
+                    <th>MAC Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>{{ ventilator.serial_number }}</td>
+                        <td>{{ ventilator.model }}</td>
+                        <td class="{% if ventilator.status == 'allocated' %}status-allocated{% else %}status-not-allocated{% endif %}">
+                            {{ ventilator.status }}
+                        </td>
+                        <td>{{ ventilator.battery_no }}</td>
+                        <td>{{ ventilator.battery_mfg_date }}</td>
+                        <td>{{ ventilator.model_no }}</td>
+                        <td>{{ ventilator.lot_no }}</td>
+                        <td>{{ ventilator.mfg_date }}</td>
+                        <td>{{ ventilator.mac }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="9">No data available</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

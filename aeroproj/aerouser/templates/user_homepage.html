@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 20px 0;
+        }
+
+        .tab-link {
+            padding: 10px 20px;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .header {
+            text-align: center;
+            color: #1f1f1f;
+            font-size: 36px;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+
+
+        .tab-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Currentdevice: {{ device}}</div>
+    <div class="tab-container">
+        <a href="http://127.0.0.1:8000/monitor" class="tab-link">Monitoring</a>
+        <a href="http://127.0.0.1:8000/device_details" class="tab-link">Device Info</a>
+        <a href="http://127.0.0.1:8000/patient_details" class="tab-link">Patient Info</a>
+    </div>
+
+</body>
+</html>
