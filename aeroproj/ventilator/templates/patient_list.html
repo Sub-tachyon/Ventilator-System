@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Patients</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td:last-child {
+            text-transform: capitalize;
+        }
+
+        td:nth-child(n+5):nth-child(-n+6) {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Patients</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Patient ID</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Doctor ID</th>
+                <th>Doctor Assigned</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.patient_id }}</td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.get_gender_display }}</td>
+                <td>{{ patient.get_status_display }}</td>
+                <td>{{ patient.doc_id }}</td>
+                <td>{{ patient.doc_name }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No patients found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

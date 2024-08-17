@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Patient Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 400px;
+            max-width: 90%;
+            margin: 0 auto;
+            max-height: 80vh; /* Set maximum height */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form select,
+        form input[type="datetime-local"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        form select {
+            width: calc(100% - 6px); 
+            padding: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Enter Patient Information</h1>
+            <form method="post" action="{% url 'patient' serial_number1=serial_number %}">
+                {% csrf_token %}
+                
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="patient_name" required>
+                
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                </select>
+                
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="PASSIVE">Passive</option>
+                    <option value="EMERGENCY">Emergency</option>
+                    <option value="DISCHARGED">Discharged</option>
+                </select>
+                
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" name="height" required>
+                
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" name="weight" required>
+                
+                <label for="blood">Blood Type:</label>
+                <input type="text" id="blood" name="blood" required>
+                
+                <label for="ibw">IBW:</label>
+                <input type="number" id="ibw" name="ibw" required>
+                
+                <label for="itv">ITV:</label>
+                <input type="number" id="itv" name="itv" required>
+                
+                <label for="bmi">BMI:</label>
+                <input type="number" id="bmi" name="bmi" required>
+                
+                <label for="admitted_date">Admitted Date:</label>
+                <input type="datetime-local" id="admitted_date" name="admitted_date" required>
+                
+                <label for="reason">Reason for Admission:</label>
+                <input type="text" id="reason" name="reason" required>
+                
+                <label for="potential">Potential Risk:</label>
+                <input type="text" id="potential" name="potential" required>
+                
+                <label for="contact">Contact Number:</label>
+                <input type="number" id="contact" name="contact" required>
+                
+                <label for="room_no">Room Number:</label>
+                <input type="text" id="room_no" name="room_no" required>
+                            
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

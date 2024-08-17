@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Logs</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Serial Number</th>
+                    <th>Log In</th>
+                    <th>Log Out</th>
+                    <th>Assigned By Doctor ID</th>
+                    <th>Assigned To Patient ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in device_logs %}
+                <tr>
+                    <td>{{ log.log_id}}</td>
+                    <td>{{ log.serial_number }}</td>
+                    <td>{{ log.device_log_in }}</td>
+                    <td>{{ log.device_log_out }}</td>
+                    <td>{{ log.assigned_by_doc_id }}</td>
+                    <td>{{ log.assigned_to_patient_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

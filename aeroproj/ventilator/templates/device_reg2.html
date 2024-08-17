@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* Adjust the vertical gap between elements */
+        }
+        label, input, select {
+            margin-bottom: 5px; /* Reduce margin for labels and inputs */
+        }
+        input[type="text"],
+        select,
+        input[type="datetime-local"] {
+            width: 300px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 10px; /* Reduce margin top for error message */
+            margin-bottom: 5px; /* Adjust margin bottom for text */
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Device Registration</h1>
+            <form action="{% url 'device_reg2' %}" method="POST"> 
+                {% csrf_token %}
+                <label for="serial_number">Serial Number:</label>
+                <input type="text" id="serial_number" name="serial_number" required>
+
+                <label for="model">Device Name:</label>
+                <input type="text" id="model" name="model" required>
+                
+                <label for="model_no">Model Number:</label>
+                <input type="text" id="model_no" name="model_no" required>
+                
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="Not allocated">Not Allocated</option>
+                    <option value="allocated">Allocated</option>
+                </select>
+                
+                <label for="lot_no">Lot Number:</label>
+                <input type="text" id="lot_no" name="lot_no" required>
+                
+                <label for="mfg_date">Manufacture Date:</label>
+                <input type="date" id="mfg_date" name="mfg_date" required>
+
+                <label for="battery_no">Battery Number:</label>
+                <input type="text" id="battery_no" name="battery_no" required>
+
+                <label for="battery_mfg_date">Battery Manufacture Date:</label>
+                <input type="date" id="battery_mfg_date" name="battery_mfg_date" required>
+
+                <label for="mac">MAC Address:</label>
+                <input type="text" id="mac" name="mac">
+                
+                <input type="submit" value="Submit">
+                <p>{{ error_message }}</p>
+            </form>
+            <p>Monitor devices? <a href="login">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>
