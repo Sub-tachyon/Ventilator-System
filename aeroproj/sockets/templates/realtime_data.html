@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dummy Data Display</title>
+</head>
+<body>
+  <h1>Dummy Data Display</h1>
+  <ul id="dummy-data-list"></ul>
+
+  <script>
+    const socket = new WebSocket('http://127.0.0.1:8000/ws/dummy_data/');
+
+    socket.onopen = function(event) {
+      console.log('WebSocket connection established.');
+    };
+
+    socket.onmessage = function(event) {
+      const data = JSON.parse(event.data);
+      // Display received data on the page
+      displayData(data);
+    };
+
+    socket.onclose = function(event) {
+      console.log('WebSocket connection closed.');
+    };
+
+    function displayData(data) {
+      const dataList = document.getElementById('dummy-data-list');
+      const listItem = document.createElement('li');
+      listItem.textContent = `Device ID: ${data.device_id}, Status: ${data.status}`;
+      dataList.appendChild(listItem);
+    }
+  </script>
+</body>
+</html>
