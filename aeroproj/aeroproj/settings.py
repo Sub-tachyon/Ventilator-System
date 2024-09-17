@@ -136,16 +136,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'noreplyaerobiosys@gmail.com'
-EMAIL_HOST_PASSWORD = 'zgjnvhcndhwuqctp'
+EMAIL_PORT =    
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [( IP, port_number)],
         },
     },
 }
